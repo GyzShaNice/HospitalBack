@@ -1,0 +1,283 @@
+html
+
+<?= $this->include('layout/header');?>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container-fluid {
+        padding: 20px;
+    }
+    .fieldset {
+        background-color: white;
+        border: 2px solid dark;
+        border-radius: 10px;
+    }
+</style>
+
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <fieldset class="mt-5 shadow">
+                    <form action="" class="bg-warning">
+                        <div class="col-md-12 bg-white">
+                            <center><h2>Payment Options</h2></center>
+                            <hr class="col-md-11">
+                            <button class="btn" data-bs-toggle="modal" data-bs-target="#phoneModal">
+                                <div class="col-md-5">
+                                    <div class="da-card shadow btn">
+                                        <img class="card-img-top mb-1" 
+                                        src="<?=base_url('assets/vendors/images/mobile_money.jpg')?>" alt="Mobile Money">
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- Telephone Number Modal -->
+                            <div class="modal" id="phoneModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Enter Telephone Number</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form id="numberForm">
+                                            <div class="modal-body">
+                                                <label for="tel_num">Telephone Number (9 digits)</label>
+                                                <input type="number" name="tel_num" id="tel_num" class="form-control" placeholder="Enter telephone number" required>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" onclick="showTransferOptions()">Save</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Transfer Options Modal -->
+                            <div class="modal" id="transferModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Transaction Options</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <button class="btn btn-secondary" onclick="showSendMoneyModal()">Transfer Money</button>
+                                            <button class="btn btn-danger" onclick="showAnnulledModal()">Annul Transaction</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Annulled Transaction Modal -->
+                            <div class="modal" id="annulledModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Transaction Annulled</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Transaction Annulled Successfully.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Send Money Modal -->
+                            <div class="modal" id="sendMoneyModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Recipient's Number</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form id="recipientForm">
+                                            <div class="modal-body">
+                                                <label>Recipient Number (9 digits)</label>
+                                                <input type="number" id="recipient" name="recipient_number" class="form-control" required>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn" onclick="showAmountModal()">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Amount Modal -->
+                            <div class="modal" id="amountModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Transaction Amount</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form id="amountForm">
+                                            <div class="modal-body">
+                                                <label>Amount (Min: 5000 FCFA)</label>
+                                                <input type="number" name="amount" id="amount" min="5000" class="form-control" required>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn" onclick="showPasswordModal()">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Password Modal -->
+                            <div class="modal" id="passwordModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Enter Secret Password</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form id="passwordForm">
+                                            <div class="modal-body">
+                                                <label>Secret Password</label>
+                                                <input type="password" name="password" class="form-control" required>
+                                            </div>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" onclick="showSuccessModal()">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Success Modal -->
+                            <div class="modal" id="successModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Transaction Successful</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Your transaction has been completed successfully.</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="da-card">
+                                    <img class="card-img-top mb-1 mt-2 shadow btn" 
+                                    src="<?=base_url('assets/vendors/images/orange_money.jpg')?>" alt="Orange Money">
+                                </div>
+                            </div>
+                        </div>
+                    </form>    
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <a href="<?=site_url('CreatingClient')?>" class="btn btn-dark text-white">Go To Update Info</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function isValidCameroonianNumber(number) {
+            return number.length === 9; // Verify 9-digit number
+        }
+
+        function showTransferOptions() {
+            const telNum = document.getElementById('tel_num').value;
+            if (isValidCameroonianNumber(telNum)) {
+                $('#phoneModal').modal('hide');
+                $('#transferModal').modal('show');
+            } else {
+                alert('Please enter a valid 9-digit Cameroonian number.');
+            }
+        }
+
+        function showSendMoneyModal() {
+            const recipientNum = document.getElementById('recipient').value;
+            if (isValidCameroonianNumber(recipientNum)) {
+                $('#transferModal').modal('hide');
+                $('#sendMoneyModal').modal('show');
+            } else {
+                alert('Please enter a valid 9-digit recipient number.');
+            }
+        }
+
+        function showAmountModal() {
+            $('#sendMoneyModal').modal('hide');
+            $('#amountModal').modal('show');
+        }
+
+        function showPasswordModal() {
+            const amount = document.getElementById('amount').value;
+            if (amount >= 5000) {
+                $('#amountModal').modal('hide');
+                $('#passwordModal').modal('show');
+            } else {
+                alert('Amount must be at least 5000 FCFA.');
+            }
+        }
+
+        function showSuccessModal() {
+            $('#passwordModal').modal('hide');
+            $('#successModal').modal('show');
+        }
+
+        function showAnnulledModal() {
+            $('#transferModal').modal('hide');
+            $('#annulledModal').modal('show');
+        }
+    </script>
+</body>
+
+<?= $this->include('layout/footer');?>
+
+Key Features:
+
+    Modal Flow: Users are guided through a series of modals based on their selections.
+    Number Validation: The script checks that telephone and recipient numbers are 9 digits long, ensuring they are valid Cameroonian numbers.
+    Amount Validation: The transaction amount must be at least 5000 FCFA.
+    JavaScript Functions: Functions handle the visibility of modals and perform validation checks.
+
+This setup ensures a smooth and validated user experience. Adjust any modal content or styles as needed to fit your application's des
+
+
+
+
+<!-- <div class="col-md-4 d-flex justify-content-end">
+	<a href="/" class="btn btn-dark text-white ml-1"><i class="fa fa-home"></i>Home</a>
+</div> -->
+
+
+<!-- <div class="container-fluid d-flex align-items-center justify-content-between mt-2">
+            
+                                
+        <div class="col-md-4">
+            <h1 class="sitename ml-3 mt-4 fixed-top"><b>Cosy Residence</b></h1><span>.</span>
+                        
+        </div>
+            
+
+            <div class="5">
+                <a href="ShowImages" class="text-white btn btn-warning">Go to Rooms</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="/" class="text-white btn btn-dark">Home</a>
+            </div>
+            
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        
+                
+    
+</div>	 -->
