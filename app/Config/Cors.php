@@ -34,7 +34,10 @@ class Cors extends BaseConfig
          *   - ['http://localhost:8080']
          *   - ['https://www.example.com']
          */
-        'allowedOrigins' => [],
+        'allowedOrigins' => [
+            'http://localhost:5173',
+            'http://127.0.0.1:5173',
+        ],
 
         /**
          * Origin regex patterns for the `Access-Control-Allow-Origin` header.
@@ -68,7 +71,15 @@ class Cors extends BaseConfig
          *
          * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Headers
          */
-        'allowedHeaders' => [],
+        'allowedHeaders' => [
+            'Content-Type',
+            'Authorization',
+            'X-Requested-With',
+            'Accept',
+            'Origin',
+            'X-API-KEY',
+            'Access-Control-Request-Method'
+        ],
 
         /**
          * Set headers to expose.
@@ -79,7 +90,10 @@ class Cors extends BaseConfig
          *
          * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Expose-Headers
          */
-        'exposedHeaders' => [],
+        'exposedHeaders' => [
+            'Content-Length',
+            'X-JSON-Response'
+        ],
 
         /**
          * Set methods to allow.
@@ -93,7 +107,15 @@ class Cors extends BaseConfig
          *
          * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
          */
-        'allowedMethods' => [],
+        'allowedMethods' => [
+            'GET',
+            'POST',
+            'PUT',
+            'DELETE',
+            'PATCH',
+            'OPTIONS',
+            'HEAD'
+        ],
 
         /**
          * Set how many seconds the results of a preflight request can be cached.
@@ -102,4 +124,16 @@ class Cors extends BaseConfig
          */
         'maxAge' => 7200,
     ];
+
+    // public function before(RequestInterface $request, $arguments = null)
+    // {
+        // Le filtre CORS de CodeIgniter gère automatiquement les headers
+        // Cette méthode est optionnelle
+        // return;
+    // }
+
+    // public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
+    // {
+    //     return $response;
+    // }
 }
