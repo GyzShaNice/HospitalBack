@@ -1,0 +1,372 @@
+CRITICAL - 2026-06-11 02:00:56 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: """"
+[Method: GET, Route: funct/%22%22]
+in SYSTEMPATH\Router\Router.php on line 737.
+ 1 SYSTEMPATH\Router\Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('funct/""')
+ 2 SYSTEMPATH\CodeIgniter.php(834): CodeIgniter\Router\Router->handle('funct/""')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+WARNING - 2026-06-11 08:36:31 --> [DEPRECATED] password_hash(): Passing null to parameter #1 ($password) of type string is deprecated in APPPATH\Controllers\PatientController.php on line 90.
+ 1 APPPATH\Controllers\PatientController.php(90): password_hash(Object(SensitiveParameterValue), '2y')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PatientController->createPatient()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PatientController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-11 09:29:20 --> mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1 in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personn...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personn...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personn...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personn...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-11 09:29:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+[Method: GET, Route: perso/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:29:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:29:21 --> [Caused by] mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-11 09:30:32 --> mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1 in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personn...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personn...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personn...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personn...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-11 09:30:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+[Method: GET, Route: perso]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:30:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:30:32 --> [Caused by] mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personnel`.`id_personnel`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`
+FROM `personel`
+JOIN `user` ON `personnel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-11 09:37:11 --> mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `us' à la ligne 1 in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `persone...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `persone...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `persone...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `persone...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-11 09:37:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `us' à la ligne 1
+[Method: GET, Route: perso]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:37:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `us' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:37:11 --> [Caused by] mysqli_sql_exception: Erreur de syntaxe près de '.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `us' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user` `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-11 09:37:30 --> mysqli_sql_exception: La table 'hospis.user' n'existe pas in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `persone...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `persone...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `persone...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `persone...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-11 09:37:30 --> CodeIgniter\Database\Exceptions\DatabaseException: La table 'hospis.user' n'existe pas
+[Method: GET, Route: perso]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:37:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: La table 'hospis.user' n'existe pas
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-11 09:37:30 --> [Caused by] mysqli_sql_exception: La table 'hospis.user' n'existe pas
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `personel`.`id_personel`, `personel`.`staff_code`, `users`.`id_user`, `users`.`name_user`, `users`.`surname_user`, `users`.`quarter`, `users`.`password`, `users`.`telephone`, `users`.`email`
+FROM `personel`
+JOIN `user` ON `personel`.`id_user` = `users`.`id_user`
+WHERE `personel`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\PersonnelController.php(31): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->indexPerso()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')

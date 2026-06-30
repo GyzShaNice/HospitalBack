@@ -7,25 +7,51 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\VitalModel;
 use App\Models\MedicalActModel;
+use App\Models\Personnel;
+use App\Models\PatientModel;
+use App\Models\UserModel;
 
 class VitalController extends BaseController
 {
     use ResponseTrait;
     protected $vi_model;
     protected $mediAct_model;
+    protected $patient_model;
+    protected $perso_model;
+    protected $user_model;
+
 
     function __construct(){
         $this->vi_model = new VitalModel();
         $this->mediAct_model = new MedicalActModel();
+        $this->patient_model = new PatientModel();
+        $this->perso_model = new Personnel();
+        $this->user_model = new UserModel();
     }
     public function indexVi()
     {
         $vitals = $this->vi_model
-                       ->select('vitalsigns.id_vi,vitalsigns.temperature,vitalsigns.weigth,vitalsigns.blood_pressure,vitalsigns.height,vitalsigns.heart_beat,
-                                    medicalact.id_medicalAct')
+                       ->select('vitalsigns.id_vi,vitalsigns.temperature,vitalsigns.weight,vitalsigns.blood_pressure,vitalsigns.height,vitalsigns.heart_beat,
+                                    medicalact.id_medicalAct,
+                                    
+                                    patient.id_patient,
+                                    patientUser.name_user AS patient_name,
+                                    patientUser.surname_user AS patient_surname,
+                                    
+                                    personel.id_personel,
+                                    personelUser.name_user AS personel_name,
+                                    personelUser.surname_user AS personel_surname'
+                                    
+                                    )
                         ->join('medicalact','vitalsigns.id_medicalAct = medicalact.id_medicalAct')
                         ->join('patient','medicalact.id_patient = patient.id_patient')
+
+                        ->join('users AS patientUser','patient.id_user = patientUser.id_user')
+
                         ->join('personel','medicalact.id_personel = personel.id_personel')
+
+                        ->join('users AS personelUser','personel.id_user = personelUser.id_user')
+
                         ->findAll();
                         
         $response = [
@@ -165,4 +191,43 @@ class VitalController extends BaseController
 
         return $this->respond($response);
     }
+
+    public function getVitalsByMedicalAct($idMedicalAct){
+        $vital = $this->vi_model
+                    ->select('
+                        vitalsigns.id_vi,
+                        vitalsigns.temperature,
+                        vitalsigns.weight,
+                        vitalsigns.blood_pressure,
+                        vitalsigns.height,
+                        vitalsigns.heart_beat,
+
+                        medicalact.id_medicalAct,
+
+                        patientUser.name_user AS patient_name,
+                        patientUser.surname_user AS patient_surname,
+
+                        personelUser.name_user AS personel_name,
+                        personelUser.surname_user AS personel_surname
+                    ')
+                    ->join('medicalact', 'vitalsigns.id_medicalAct = medicalact.id_medicalAct')
+                    ->join('patient', 'medicalact.id_patient = patient.id_patient')
+                    ->join('users AS patientUser', 'patient.id_user = patientUser.id_user')
+                    ->join('personel', 'medicalact.id_personel = personel.id_personel')
+                    ->join('users AS personelUser', 'personel.id_user = personelUser.id_user')
+                    ->where('vitalsigns.id_medicalAct', $idMedicalAct)
+                    ->first();
+
+
+                    if (!$vital){
+                        return $this->failNotFound("vital record not found");
+                    }
+
+                    return $this->respond([
+                        "success"=>true,
+                        "message"=>"vital found",
+                        "data"=>$vital
+                    ]);
+    }
+
 }

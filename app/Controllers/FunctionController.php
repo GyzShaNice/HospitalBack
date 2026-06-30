@@ -21,7 +21,7 @@ class FunctionController extends BaseController
     {
         $functs = $this->funct_model->findAll();
 
-            $reponse = [
+            $response = [
                 "message"=>count($functs)>0? "functs found":"functs not found",
                 "success"=>count($functs)>0,
                 "data"=>$functs

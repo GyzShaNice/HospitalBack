@@ -1,0 +1,561 @@
+ERROR - 2026-06-18 09:10:19 --> mysqli_sql_exception: Champ 'vitalsigns.weigth' inconnu dans field list in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsi...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsi...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsi...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsi...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\VitalController.php(29): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-18 09:10:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Champ 'vitalsigns.weigth' inconnu dans field list
+[Method: GET, Route: vital/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VitalController.php(29): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:10:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Champ 'vitalsigns.weigth' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\VitalController.php(29): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:10:19 --> [Caused by] mysqli_sql_exception: Champ 'vitalsigns.weigth' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weigth`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\VitalController.php(29): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-18 09:24:18 --> mysqli_sql_exception: Champ 'patient.name_user' inconnu dans field list in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsi...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsi...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsi...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsi...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\VitalController.php(39): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-18 09:24:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Champ 'patient.name_user' inconnu dans field list
+[Method: GET, Route: vital/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VitalController.php(39): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:24:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Champ 'patient.name_user' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\VitalController.php(39): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:24:18 --> [Caused by] mysqli_sql_exception: Champ 'patient.name_user' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`name_user`, `patient`.`surname_user`, `personel`.`name_user`, `personel`.`surname_user`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\VitalController.php(39): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-18 09:48:28 --> mysqli_sql_exception: Champ 'personel.id_user' inconnu dans on clause in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `Medical...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `Medical...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `Medical...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `Medical...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\MedicalActController.php(47): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\MedicalActController->indexMedicalAct()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MedicalActController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-18 09:48:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Champ 'personel.id_user' inconnu dans on clause
+[Method: GET, Route: medic/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MedicalActController.php(47): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MedicalActController->indexMedicalAct()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MedicalActController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:48:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Champ 'personel.id_user' inconnu dans on clause
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\MedicalActController.php(47): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MedicalActController->indexMedicalAct()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MedicalActController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:48:28 --> [Caused by] mysqli_sql_exception: Champ 'personel.id_user' inconnu dans on clause
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `MedicalAct`.`id_medicalAct`, `MedicalAct`.`type_act`, `MedicalAct`.`date_Act`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `MedicalAct`
+JOIN `patient` ON `MedicalAct`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `MedicalAct`.`id_personel` = `personel`.`id_personel`
+WHERE `MedicalAct`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\MedicalActController.php(47): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MedicalActController->indexMedicalAct()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MedicalActController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-18 09:55:26 --> mysqli_sql_exception: Champ 'personel.id_perso' inconnu dans field list in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsi...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsi...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsi...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsi...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\VitalController.php(53): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-18 09:55:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Champ 'personel.id_perso' inconnu dans field list
+[Method: GET, Route: vital/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\VitalController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:55:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Champ 'personel.id_perso' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\VitalController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 09:55:26 --> [Caused by] mysqli_sql_exception: Champ 'personel.id_perso' inconnu dans field list
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `vitalsigns`.`id_vi`, `vitalsigns`.`temperature`, `vitalsigns`.`weight`, `vitalsigns`.`blood_pressure`, `vitalsigns`.`height`, `vitalsigns`.`heart_beat`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient_name`, `patientUser`.`surname_user` AS `patient_surname`, `personel`.`id_perso`, `personelUser`.`name_user` AS `personel_name`, `personelUser`.`surname_user` AS `personel_surname`
+FROM `vitalSigns`
+JOIN `medicalact` ON `vitalsigns`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+WHERE `vitalSigns`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\VitalController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->indexVi()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+ERROR - 2026-06-18 13:26:49 --> mysqli_sql_exception: Erreur de syntaxe près de '.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_per' à la ligne 1 in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `consult...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `consult...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `consult...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `consult...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\ConsultationController.php(53): CodeIgniter\BaseModel->findAll()
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\ConsultationController->indexConsult()
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultationController))
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#14 {main}
+CRITICAL - 2026-06-18 13:26:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_per' à la ligne 1
+[Method: GET, Route: consult/]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ConsultationController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultationController->indexConsult()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultationController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 13:26:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Erreur de syntaxe près de '.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_per' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\ConsultationController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultationController->indexConsult()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultationController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 13:26:49 --> [Caused by] mysqli_sql_exception: Erreur de syntaxe près de '.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_per' à la ligne 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1636): CodeIgniter\Database\BaseConnection->query('SELECT `consultation`.`id_consult`, `consultation`.`motif`, `consultation`.`symptoms`, `consultation`.`diagnois`, `consultation`.`observation`, `consultation`.`recommendation`, `medicalact`.`id_medicalAct`, `patient`.`id_patient`, `patientUser`.`name_user` AS `patient`.`name`, `patientUser`.`surname_user` AS `patient`.`surname`, `personel`.`id_personel`, `personelUser`.`name_user` AS `personel`.`name`, `personelUser`.`surname_user` AS `personel`.`surname`
+FROM `consultation`
+JOIN `medicalact` ON `consultation`.`id_medicalAct` = `medicalact`.`id_medicalAct`
+JOIN `patient` ON `medicalact`.`id_patient` = `patient`.`id_patient`
+JOIN `users` AS `patientUser` ON `patient`.`id_user` = `patientUser`.`id_user`
+JOIN `personel` ON `medicalact`.`id_personel` = `personel`.`id_personel`
+JOIN `users` AS `personelUser` ON `personel`.`id_user` = `personelUser`.`id_user`
+WHERE `consultation`.`deleted_at` IS NULL', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\ConsultationController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ConsultationController->indexConsult()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ConsultationController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+14 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-18 15:28:37 --> ErrorException: Undefined variable $idMedicalAct
+[Method: GET, Route: vital/medicalAct/1]
+in APPPATH\Controllers\VitalController.php on line 218.
+ 1 APPPATH\Controllers\VitalController.php(218): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idMedicalAct', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\VitalController.php', 218)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\VitalController->getVitalsByMedicalAct('1')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\VitalController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')

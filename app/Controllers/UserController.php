@@ -49,7 +49,7 @@ class UserController extends BaseController
 
         $rules = [
             'password' => 'required|max_length[254]|min_length[6]',
-            'email' => 'required|max_length[254]|valid_email',
+            'staff_code' => 'required|max_length[100]|min_length[5]',
         ];
 
         if(!$this->validate($rules)){
@@ -60,10 +60,10 @@ class UserController extends BaseController
             ],ResponseInterface::HTTP_BAD_REQUEST);
         }
 
-        $email = $this->request->getVar('email');
+        $staffCode = $this->request->getVar('staff_code');
         $password = $this->request->getVar('password');
 
-        $user = $this->user_model->where('email',$email)->first();
+        $user = $this->user_model->where('staff_code',$staffCode)->first();
 
         if(!$user){
             return $this->fail([

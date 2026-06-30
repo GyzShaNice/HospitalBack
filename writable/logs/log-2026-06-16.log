@@ -1,0 +1,44 @@
+CRITICAL - 2026-06-16 13:07:25 --> Error: Class "Firebase\JWT\JWT" not found
+[Method: POST, Route: perso/connect]
+in APPPATH\Controllers\PersonnelController.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->connexionPerso()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-16 13:18:27 --> Error: Class "Firebase\JWT\JWT" not found
+[Method: POST, Route: perso/connect]
+in APPPATH\Controllers\PersonnelController.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->connexionPerso()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-16 13:25:30 --> DomainException: Provided key is too short
+[Method: POST, Route: perso/connect]
+in VENDORPATH\firebase\php-jwt\src\JWT.php on line 701.
+ 1 VENDORPATH\firebase\php-jwt\src\JWT.php(274): Firebase\JWT\JWT::validateHmacKeyLength('Subscribe View Moto', 'SHA256')
+ 2 VENDORPATH\firebase\php-jwt\src\JWT.php(242): Firebase\JWT\JWT::sign('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvIiwic3ViIjoiNSIsImlhdCI6MTc4MTYxNjMzMCwiZXhwIjoxNzgxNjE5OTMwLCJkYXRhIjp7ImlkX3BlcnNvbmVsIjoiNSIsImlkX3VzZXIiOiI1IiwibmFtZV91c2VyIjoiTWFqb3IiLCJzdXJuYW1lX3VzZXIiOiJTb25nU2FuZyIsImVtYWlsIjoibWFqb3JAZ21haWwuY29tIiwic3RhZmZfY29kZSI6IkRPQzAwOCIsImZ1bmN0aW9uIjoiTWFqb3IifX0', Object(SensitiveParameterValue), 'HS256')
+ 3 APPPATH\Controllers\PersonnelController.php(147): Firebase\JWT\JWT::encode([...], Object(SensitiveParameterValue), 'HS256')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->connexionPerso()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+10 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-06-16 15:01:22 --> ErrorException: Undefined variable $thiss
+[Method: PUT, Route: perso/updatePerso/6]
+in APPPATH\Controllers\PersonnelController.php on line 301.
+ 1 APPPATH\Controllers\PersonnelController.php(301): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $thiss', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\PersonnelController.php', 301)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PersonnelController->updatePerso('6')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PersonnelController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')

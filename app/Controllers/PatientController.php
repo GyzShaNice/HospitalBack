@@ -7,6 +7,14 @@ use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\PatientModel;
 use App\Models\UserModel;
+use App\Models\MedicalActModel;
+use App\Models\VitalModel;
+use App\Models\ConsultationModel;
+use App\Models\Personnel;
+
+
+
+
 
 class PatientController extends BaseController
 {
@@ -14,10 +22,22 @@ class PatientController extends BaseController
 
     protected $patient_model;
     protected $user_model;
+    protected $mediAct_model;
+    protected $vi_model;
+    protected $consult_model;
+    protected $perso_model;
+
+
+
+
 
     public function __construct(){
         $this->patient_model = new PatientModel();
         $this->user_model = new UserModel();
+        $this->mediAct_model = new MedicalActModel();
+        $this->vi_model = new VitalModel();
+        $this->consult_model = new ConsultationModel();
+        $this->perso_model = new Personnel();
     }
 
     public function indexPatient()
@@ -132,11 +152,128 @@ class PatientController extends BaseController
             ]);
     }
 
-    public function updatePatient(){
+    public function updatePatient($idpatient = null){
+        $patient = $this->patient_model->find($idpatient);
+        if(!$patient){
+            return $this->failNotFound('Patient not found');
+        }
+        // cherche le patient. si il n'existe pas,retourne l'erreur
+
+        $id_user = $patient['id_user'];
+        // recupere l'id de la table users lie a ce patient
+
+        // ont demarre la transaction, si une des requete echoue,les 2 sont annuler
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        $this->user_model->update($id_user,[
+            'name_user'=>$this->request->getVar('name_user'),
+            'surname_user'=>$this->request->getVar('surname_user'),
+            'email'=>$this->request->getVar('email'),
+            'telephone'=>$this->request->getVar('telephone'),
+            'quarter'=>$this->request->getVar('quarter'),
+        ]);
+        // mets a jour la table users avec les nouvelles donnee
+
+        // ont mets a jour la table patient(seulement emergency_number est dans cette table)
+
+        $this->patient_model->update($idpatient,[
+            'emergency_number'=>$this->request->getVar('emergency_number'),
+        ]);
+
+        $db->transComplete();
+
+        if($db->transStatus() === false){
+            return $this->fail('Update failed');
+        }
+
+        return $this->respond(['message'=> 'Patient updated','success'=>true]);
 
     }
 
-    public function deletePatient(){
-        
+    public function deletePatient($idpatient = null){
+        $patient  = $this->patient_model->find($idpatient);
+
+        if(!$patient){
+            return $this->failNotFound('Patient not found');
+        }
+
+        $id_user = $patient['id_user'];
+
+        // demarre une transaction. si une 2 suppressions echoues,les 2 sont annulees
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        $this->patient_model->delete($idpatient);
+        // supprimer le patient dans la table patient.ont supprimer en premier parceque patient depend de users
+
+        $this->user_model->delete($id_user);
+        // ont supprime l'utilisateur dans la table users. ont supprimer en deuxieme
+
+        $db->transComplete();
+
+        if($db->transStatus() === false){
+            return $this->fail('Delete failed');
+        }
+
+        return $this->respond([
+            'message'=>'Patient deleted',
+            'success'=>true
+        ]);
+
+    }
+
+    // pour avoir les past information complet d'un patient
+    public function getPatientHistory($idPatient){
+        $medicalActs = $this->mediAct_model
+                            ->where('id_patient',$idPatient)
+                            ->findAll();
+
+                //    par dans la table act medical
+                // regarde les records ou le patient = this patient 
+
+
+                $history = [];
+                // ont va stocker l'historique du patient ici
+
+                foreach($medicalActs as $act){
+                    $vitals = $this->vi_model
+                                    ->where('id_medicalAct',$act['id_medicalAct'])
+                                    ->first();
+
+                    $consult = $this->consult_model
+                                    ->where('id_medicalAct',$act['id_medicalAct'])
+                                    ->first(); 
+                                    
+                    $patient = $this->patient_model
+                                    ->select('users.name_user, users.surname_user')
+                                    ->join('users', 'patient.id_user = users.id_user')
+                                    ->where('patient.id_patient', $act['id_patient'])
+                                    ->first();
+                                    
+                    $personnel = $this->perso_model
+                                    ->select('users.name_user, users.surname_user')
+                                    ->join('users', 'personel.id_user = users.id_user')
+                                    ->where('personel.id_personel', $act['id_personel'])
+                                    ->first();                
+                
+                        $history[] = [
+                            "patient"=>$patient,
+                            "personnel" =>$personnel,
+                            "medicalAct" => $act,
+                            "vitals" => $vitals,
+                            "consultation" => $consult
+                        ];
+
+                
+                }
+
+
+                
+                return $this->respond([
+                    "success" => true,
+                    "data"=> $history
+                ]);
     }
 }

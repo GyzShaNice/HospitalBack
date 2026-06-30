@@ -53,11 +53,11 @@ $routes->get('/', 'Home::index');
 
     // groupe api ca veut dire que, toutes les routes api seront ici
    // Gère TOUTES les requêtes OPTIONS pour toutes les routes api/*
-$routes->options('api/ping', 'TestController::ping');
-$routes->options('api/(:any)', 'TestController::ping');
-    $routes->group('api',function($routes){
-        $routes->get('ping','TestController::ping');
-    });
+// $routes->options('api/ping', 'TestController::ping');
+// $routes->options('api/(:any)', 'TestController::ping');
+//     $routes->group('api',function($routes){
+//         $routes->get('ping','TestController::ping');
+//     });
 
     $routes->group('user',function($routes){
         $routes->get('','UserController::index');
@@ -69,15 +69,18 @@ $routes->options('api/(:any)', 'TestController::ping');
     });
 
     $routes->group('perso',function($routes){
-        $routes->get('','PersonnelController::indexPerso');
+        $routes->get('','PersonnelController::indexPerso',
+        ['filter'=>'auth']);
         $routes->get('(:num)','PersonnelController::showPerso');
         $routes->post('connect','PersonnelController::connexionPerso');
         $routes->post('create','PersonnelController::createPerso');
+        $routes->put('updatePerso/(:num)','PersonnelController::updatePerso/$1');
+        $routes->delete('deletePerso/(:num)','PersonnelController::deletePerso/$1');
     });
 
     $routes->group('funct',function($routes){
-        $routes->get('','FunctionController::indexPerso');
-        $routes->get('(:num)','FunctionController::showPerso');
+        $routes->get('','FunctionController::indexFunction');
+        $routes->get('(:num)','FunctionController::showFuncts');
         $routes->post('create','FunctionController::createFunction');
         $routes->post('update/(:num)','FunctionController::updateFunct/$1');
         $routes->post('delete/(:num)','FunctionController::deleteFunct/$1');
@@ -85,10 +88,11 @@ $routes->options('api/(:any)', 'TestController::ping');
 
     $routes->group('patient',function($routes){
         $routes->get('','PatientController::indexPatient');
-        $routes->get('(:num)','PatientController::showPatient');
+        $routes->get('(:num)','PatientController::showPatient/$1');
         $routes->post('create','PatientController::createPatient');
-        $routes->post('update/(:num)','PatientController::updatePatient/$1');
-        $routes->post('delete/(:num)','PatientController::deletePatient/$1');
+        $routes->put('update/(:num)','PatientController::updatePatient/$1');
+        $routes->delete('delete/(:num)','PatientController::deletePatient/$1');
+        $routes->get('patientHistory/(:num)','PatientController::getPatientHistory/$1');
     });
 
     $routes->group('medic',function($routes){
@@ -100,19 +104,20 @@ $routes->options('api/(:any)', 'TestController::ping');
     });
 
     $routes->group('vital',function($routes){
-        $routes->get('','VitalController ::indexVi');
+        $routes->get('','VitalController::indexVi');
         $routes->get('(:num)','VitalController ::showVi/$1');
         $routes->post('createVitals','VitalController::createVi');
         $routes->post('updateVitals/(:num)','VitalController::updateVi/$1');
         $routes->post('deleteVitals/(:num)','VitalController::deleteVi/$1');
+        $routes->get('medicalAct/(:num)','VitalController::getVitalsByMedicalAct/$1');
     });
 
     $routes->group('consult',function($routes){
-        $routes->get('','ConsultationController :: indexConsult');
-        $routes->get('showConsult/(:num)','ConsultationController :: showConsult/$1');
+        $routes->get('','ConsultationController::indexConsult');
+        $routes->get('showConsult/(:num)','ConsultationController::showConsult/$1');
         $routes->post('createConsult','ConsultationController::createConsult');
-        $routes->put('updateConsult/(:num)','ConsultationController :: updateConsult/$1');
-        $routes->delete('deleteConsult/(:num)','ConsultationController :: deleteConsult/$1');
+        $routes->put('updateConsult/(:num)','ConsultationController::updateConsult/$1');
+        $routes->delete('deleteConsult/(:num)','ConsultationController::deleteConsult/$1');
     });
 
     $routes->group('presc',function($routes){

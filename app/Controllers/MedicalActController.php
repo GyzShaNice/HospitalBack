@@ -8,6 +8,8 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\MedicalActModel;
 use App\Models\PatientModel;
 use App\Models\Personnel;
+use App\Models\UserModel;
+
 
 class MedicalActController extends BaseController
 {
@@ -15,19 +17,38 @@ class MedicalActController extends BaseController
     protected $mediAct_model;
     protected $patient_model;
     protected $perso_model;
+    protected $user_model;
+
 
     function __construct(){
         $this->mediAct_model = new MedicalActModel();
         $this->patient_model = new PatientModel();
         $this->perso_model = new Personnel();
+        $this->user_model = new UserModel();
+
     }
     public function indexMedicalAct()
     {
         $mediActs =$this->mediAct_model
-                        ->select('MedicalAct.id_medicalAct,MedicalAct.type_act,MedicalAct.date_Act,patient.id_patient,patient.emergency_number,
-                                    personel.id_personel,personel.staff_code')
+                        ->select('MedicalAct.id_medicalAct,MedicalAct.type_act,MedicalAct.date_Act,
+
+                                    patient.id_patient,
+                                    patientUser.name_user AS patient_name,
+                                    patientUser.surname_user AS patient_surname,
+
+                                    personel.id_personel,
+                                    personelUser.name_user AS personel_name,
+                                    personelUser.surname_user AS personel_surname
+                                    ')
                         ->join('patient','MedicalAct.id_patient = patient.id_patient')
+
+                        ->join('users AS patientUser','patient.id_user = patientUser.id_user')
+
+                        
                         ->join('personel','MedicalAct.id_personel = personel.id_personel')
+
+                        ->join('users AS personelUser','personel.id_user = personelUser.id_user')
+
                         ->findAll();
                 $response = [
                     "message"=> count($mediActs)>0? "medical act found":"medical act not found",

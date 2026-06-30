@@ -8,6 +8,8 @@ use Codeigniter\API\ResponseTrait;
 use App\Models\Personnel;
 use App\Models\UserModel;
 use App\Models\FunctionnModel;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class PersonnelController extends BaseController
 {
@@ -25,11 +27,12 @@ class PersonnelController extends BaseController
     public function indexPerso()
     {
         $persos = $this->perso_model
-                      ->select('personnel.id_personnel,users.id_user,users.name_user
-                                users.surname_user,users.quarter,users.password,users.telephone')
-                       ->join('user','personnel.id_user = users.id_user')   
+                      ->select('personel.id_personel,personel.staff_code,users.id_user,users.name_user,
+                                users.surname_user,users.quarter,users.password,users.telephone,users.email,function.name')
+                       ->join('users','personel.id_user = users.id_user')
+                       ->join('function','personel.id_function = function.id_function')  
                        ->findAll();
-                       
+
                     $response = [
                         "message"=>count($persos)>0? "personnel found":"personnel not found",
                         "success"=>count($persos)>0,
@@ -73,12 +76,19 @@ class PersonnelController extends BaseController
             ], ResponseInterface::HTTP_BAD_REQUEST);
         }
 
+        
+
         $staff = $this->request->getVar('staff_code');
         $password = $this->request->getVar('password');
 
         // find personel by staff code
+    // dd($this->request->getVar('staff_code'));
+    // dd($staff);
+       $perso = $this->perso_model
+              ->where('staff_code',$staff)
+              ->first();
 
-        $perso = $this->perso_model->where('staff_code',$staff)->first();
+// dd($perso);
 
         if (!$perso) {
             return $this->fail([
@@ -116,6 +126,26 @@ class PersonnelController extends BaseController
                 ], ResponseInterface::HTTP_BAD_REQUEST);
          } 
 
+         $iat = time();
+         $payload = [
+            'iss'=>base_url(),
+            'sub'=>$perso['id_personel'],
+            'iat'=>$iat,
+            'exp'=>$iat+3600,
+            'data'=>[
+                'id_personel'=>$perso['id_personel'],
+                'id_user'=>$user['id_user'],
+                'name_user'=>$user['name_user'],
+                'surname_user'=>$user['surname_user'],
+                'email'=>$user['email'],
+                'staff_code'=>$perso['staff_code'],
+                'function'=>$function['name'],
+            ]
+         ];
+
+         $secretKey = getenv('JWT_SECRET');
+         $jwt = \Firebase\JWT\JWT::encode($payload,$secretKey,'HS256');
+
         return $this->respond([
         'message' => 'login successful',
         'success' => true,
@@ -127,7 +157,9 @@ class PersonnelController extends BaseController
                 'telephone'     => $user['telephone'],
                 'quarter'       => $user['quarter'],
                 'staff_code'    => $perso['staff_code'],
-                'function'      => $function['name']
+                'function'      => $function['name'],
+                'token'         =>$jwt,
+               
             ]
         ], ResponseInterface::HTTP_OK); 
     }
@@ -246,10 +278,63 @@ class PersonnelController extends BaseController
     } 
     
     public function updatePerso($idperso=null){
+        $perso = $this->perso_model->find($idperso);
 
+        if(!$perso){
+            return $this->failNotFound('Personnel not found');
+        }
+
+        $id_user = $perso['id_user'];
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        $this->user_model->update($id_user,[
+            'name_user' => $this->request->getVar('name_user'),
+            'surname_user'=>$this->request->getVar('surname_user'),
+            'email'=>$this->request->getVar('email'),
+            'telephone'=>$this->request->getVar('telephone'),
+            'quarter'=>$this->request->getVar('quarter')
+        ]);
+
+        $this->perso_model->update($idperso,[
+            'staff_code'=>$this->request->getVar('staff_code')
+        ]);
+
+        $db->transComplete();
+
+        if($db->transStatus() === false){
+            return $this->fail('Update failed');
+        }
+
+        return $this->respond(['message'=>'Personnel updatedd','success'=>true]);
     }
 
     public function deletePerso($idperso=null){
+        $perso = $this->perso_model->find($idperso);
 
+        if(!$perso){
+            return $this->failNotFound('Personnel not found');
+        }
+
+        $id_user = $perso['id_user'];
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        $this->perso_model->delete($idperso);
+
+        $this->user_model->delete($id_user);
+
+        $db->transComplete();
+
+        if($db->transStatus() === false){
+            return $this->fail('Delete failed');
+        }
+
+        return $this->respond([
+            'message'=> 'Personnel deleted',
+            'success'=>true
+        ]);
     }
 }
