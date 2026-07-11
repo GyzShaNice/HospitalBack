@@ -166,4 +166,39 @@ class MedicalActController extends BaseController
     public function deleteMediActs(){
 
     }
+
+    public function sendToConsultation($idMedicalAct = null){
+        $medicalAct = $this->mediAct_model->find($idMedicalAct);
+            if(!$medicalAct){
+                return $this->failNotFound('acte medical introuvable');
+            }
+
+            $updated = $this->mediAct_model->update($idMedicalAct,[
+                'status'=>'attente_consultation'
+            ]);
+
+            return $this->respond([
+                'message'=>$updated? 'consultation envoyee':'echec envoie',
+                'success'=>(bool)$updated
+            ]);
+
+    }
+
+    public function pendingConsultations(){
+        $mediActs = $this->mediAct_model
+                         ->select('MedicalAct.id_medicalAct,MedicalAct.date_act,
+                                    patient.id_patient,
+                                    patientUser.name_user AS patient_name,
+                                    patientUser.surname_user AS patient_surname')
+                          ->join('patient','MedicalAct.id_patient = patient.id_patient')
+                          ->join('users AS patientUser','patient.id_user = patientUser.id_user')
+                          ->where('MedicalAct.status','attente_consultation')
+                          ->findAll();
+                          
+           return $this->respond([
+                'message'=>count($mediActs)>0? 'pending found':'none pending',
+                'success'=>true,
+                'data'=>$mediActs
+           ]);               
+    }
 }

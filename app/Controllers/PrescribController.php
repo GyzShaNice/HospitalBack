@@ -12,7 +12,7 @@ class PrescribController extends BaseController
 {
     use ResponseTrait;
 
-    protected $pres_model;
+    protected $presc_model;
     protected $consult_model;
 
     function __construct(){
@@ -102,9 +102,56 @@ class PrescribController extends BaseController
             'date_presc' => 'required|valid_date',
             'instructions' => 'required|max_length[255]|min_length[3]',
         ];
+
+        if(!$this->validate($rules)){
+        return $this->fail([
+            "message"=>"invalid information",
+            "error"=>$this->validator->getErrors()
+        ]);
+    }
+
+
+    $presc = $this->pres_model->find($idPresc);
+
+    if(!$presc){
+        return $this->fail([
+            "message"=>"prescription not found"
+        ]);
+    }
+
+
+    $data = [
+        "date_presc"=>$this->request->getVar('date_presc'),
+        "instructions"=>$this->request->getVar('instructions')
+    ];
+
+
+    $updated = $this->pres_model->update($idPresc,$data);
+
+
+    return $this->respond([
+        "message"=>$updated ? "prescription updated":"update failed",
+        "success"=>$updated,
+        "data"=>$data
+    ]);
     }
 
     public function deletePresc($idPresc = null){
-        
+         $presc = $this->pres_model->find($idPresc);
+
+    if(!$presc){
+        return $this->fail([
+            "message"=>"prescription not found"
+        ]);
+    }
+
+
+    $deleted = $this->pres_model->delete($idPresc);
+
+
+    return $this->respondDeleted([
+        "message"=>$deleted ? "prescription deleted":"delete failed",
+        "success"=>$deleted
+    ]);
     }
 }

@@ -4,38 +4,28 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class StockMovement extends Migration
+class PurchaseLine extends Migration
 {
     public function up()
      {
         $this->forge->addField([
-            'id_stockMvt' => [
+            'id_purchaseL' => [
                 'type' => 'INT',
                 'auto_increment' => true
             ],
-
-             'movement_type' => [
-                'type' => 'VARCHAR',
-                'constraint' => 20,
-            ],
-
-            'quantity' => [
-                'type' => 'INT'
-            ],
-
             
 
-            'id_stock' => [
-                'type' => 'INT'
-            ],
-
-             'id_product' => [
-                'type' => 'INT'
-            ],
-            
-            'movement_date' => [
-                'type' => 'DATE',
+            'id_product' => [
+                'type' => 'INT',
                 
+            ],
+
+            'id_purchase' => [
+                'type' => 'INT',
+            ],
+
+             'id_stockMvt' => [
+                'type' => 'INT',
             ],
 
             'created_at' => [
@@ -53,14 +43,15 @@ class StockMovement extends Migration
 
         ]);
 
-        $this->forge->addKey('id_stockMvt',true);
-        $this->forge->addForeignKey('id_stock','Stock','id_stock','CASCADE');
+        $this->forge->addKey('id_purchaseL',true);
+        $this->forge->addForeignKey('id_purchase','Purchase','id_purchase','CASCADE');
+        $this->forge->addForeignKey('id_stockMvt','StockMovement','id_stockMvt','CASCADE');
         $this->forge->addForeignKey('id_product','Product','id_product','CASCADE');
-        $this->forge->createTable('StockMovement');
+        $this->forge->createTable('PurchaseL');
      }
 
     public function down()
     {
-        $this->forge->dropTable('StockMovement');
+        $this->forge->dropTable('PurchaseL');
     }
 }

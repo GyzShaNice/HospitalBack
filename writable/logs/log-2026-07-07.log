@@ -1,0 +1,18 @@
+ERROR - 2026-07-07 21:03:31 --> mysqli_sql_exception: Le champ 'quantity_available' ne peut être vide (null) in C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `st...', 0)
+#1 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `st...')
+#2 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `st...')
+#3 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Database\BaseBuilder.php(2332): CodeIgniter\Database\BaseConnection->query('INSERT INTO `st...', Array, false)
+#4 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\app\Controllers\StockMovementController.php(83): CodeIgniter\Model->insert(Array)
+#8 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(933): App\Controllers\StockMovementController->createStockMvt()
+#9 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\StockMovementController))
+#10 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 C:\Users\FBI DENIS STORE\Desktop\TestBachelor\HospitalBack\system\rewrite.php(44): require_once('C:\\Users\\FBI DE...')
+#15 {main}

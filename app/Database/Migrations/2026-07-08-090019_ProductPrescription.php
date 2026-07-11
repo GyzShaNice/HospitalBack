@@ -4,22 +4,24 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Purchase extends Migration
+class ProductLine extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_purchase' => [
+            'id_ProductPres' => [
                 'type' => 'INT',
                 'auto_increment' => true
             ],
 
-            
-            'final_amount' => [
+            'id_presc' => [
                 'type' => 'INT'
             ],
 
-            
+             'id_product' => [
+                'type' => 'INT'
+            ],
+           
 
             'created_at' => [
                 'type' => 'DATETIME',
@@ -36,12 +38,14 @@ class Purchase extends Migration
 
         ]);
 
-        $this->forge->addKey('id_purchase',true);
-        $this->forge->createTable('Purchase');
-     }
+        $this->forge->addKey('id_ProductPres',true);
+        $this->forge->addForeignKey('id_presc','prescrib','id_presc','CASCADE');
+        $this->forge->addForeignKey('id_product','product','id_product','CASCADE');
+        $this->forge->createTable('ProductPres');
+    }
 
     public function down()
     {
-        $this->forge->dropTable('Purchase');
+        $this->forge->dropTable('ProductPres');
     }
 }

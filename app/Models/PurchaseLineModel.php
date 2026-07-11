@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class MedicalActModel extends Model
+class PurchaseLineModel extends Model
 {
-    protected $table            = 'MedicalAct';
-    protected $primaryKey       = 'id_medicalAct';
+    protected $table            = 'purchasel';
+    protected $primaryKey       = 'id_purchaseL';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['type_act','date_act','status','id_patient','id_personel'];
+    protected $allowedFields    = ['id_product','id_purchase','id_stockMvt'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

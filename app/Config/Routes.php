@@ -101,6 +101,11 @@ $routes->get('/', 'Home::index');
         $routes->post('create','MedicalActController::createMediActs');
         $routes->post('update/(:num)','PatientController::updateMediActs/$1');
         $routes->post('delete/(:num)','PatientController::deleteMediActs/$1');
+
+        $routes->post('medical-act/(:num)/send-to-consultation','MedicalActController::sendToConsultation/$1');
+        $routes->get('medical-act/pending','MedicalActController::pendingConsultations');
+
+
     });
 
     $routes->group('vital',function($routes){
@@ -158,4 +163,34 @@ $routes->get('/', 'Home::index');
         $routes->post('createSubstitution','SubstitutionController::createSubs');
         $routes->put('updateSubstitution/(:num)','SubstitutionController::updateSubs/$1');
         $routes->delete('deleteSubstitution/(:num)','SubstitutionController::deleteSubs/$1');
+    });
+
+    $routes->group('product',function($routes){
+        $routes->get('','ProductController::indexProduct');
+        $routes->get('showProdu/(:num)','ProductController::showProduct/$1');
+        $routes->post('createProdu','ProductController::createProduct');
+        $routes->put('updateProdu/(:num)','ProductController::updateProduct/$1');
+        $routes->delete('deleteProdu/(:num)','ProductController::deleteProduct/$1');
+    });
+
+    $routes->group('stock',function($routes){
+        $routes->get('','StockController::indexStock');
+        $routes->get('showStock/(:num)','StockController::showStock/$1');
+        $routes->post('createStock','StockController::createStock');
+        $routes->put('updateStock/(:num)','StockController::updateStock/$1');
+        $routes->delete('deleteStock/(:num)','StockController::deleteStock/$1');
+    });
+
+    $routes->group('stockMvt',function($routes){
+        $routes->get('','StockMovementController::indexStockMvt');
+        $routes->get('showStockMvt/(:num)','StockMovementController::showStockMvt/$1');
+        $routes->post('createStockMvt','StockMovementController::createStockMvt');
+        $routes->delete('deleteStockMvt/(:num)','StockMovementController::deleteStockMvt/$1');
+    });
+
+
+     $routes->group('purchase',function($routes){
+        $routes->get('','PurchaseController::indexPurchase');
+        $routes->post('createPurchase','PurchaseController::createPurchase');
+       
     });
