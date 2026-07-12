@@ -111,7 +111,7 @@ class PrescribController extends BaseController
     }
 
 
-    $presc = $this->pres_model->find($idPresc);
+    $presc = $this->presc_model->find($idPresc);
 
     if(!$presc){
         return $this->fail([
@@ -126,7 +126,7 @@ class PrescribController extends BaseController
     ];
 
 
-    $updated = $this->pres_model->update($idPresc,$data);
+    $updated = $this->presc_model->update($idPresc,$data);
 
 
     return $this->respond([
@@ -137,7 +137,7 @@ class PrescribController extends BaseController
     }
 
     public function deletePresc($idPresc = null){
-         $presc = $this->pres_model->find($idPresc);
+         $presc = $this->presc_model->find($idPresc);
 
     if(!$presc){
         return $this->fail([
@@ -146,7 +146,7 @@ class PrescribController extends BaseController
     }
 
 
-    $deleted = $this->pres_model->delete($idPresc);
+    $deleted = $this->presc_model->delete($idPresc);
 
 
     return $this->respondDeleted([

@@ -12,7 +12,7 @@ class PurchaseModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['final_amount'];
+    protected $allowedFields    = ['final_amount', 'receipt_number', 'payment_method', 'id_personel'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

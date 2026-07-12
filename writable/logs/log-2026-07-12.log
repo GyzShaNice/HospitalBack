@@ -1,0 +1,42 @@
+ERROR - 2026-07-12 10:34:20 --> mysqli_sql_exception: Failed to open the referenced table 'group' in C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `S...', 0)
+#1 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `S...')
+#2 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `S...')
+#3 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `S...')
+#4 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\app\Database\Migrations\2026-07-12-103244_CreateShiftAndExtendGroupAffecter.php(45): CodeIgniter\Database\Forge->createTable('Shift')
+#5 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateShiftAndExtendGroupAffecter->up()
+#6 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2026-07-12 10:34:27 --> mysqli_sql_exception: Failed to open the referenced table 'group' in C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MySQLi\Connection.php(312): mysqli->query('CREATE TABLE `S...', 0)
+#1 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `S...')
+#2 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `S...')
+#3 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `S...')
+#4 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\app\Database\Migrations\2026-07-12-103244_CreateShiftAndExtendGroupAffecter.php(45): CodeIgniter\Database\Forge->createTable('Shift')
+#5 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MigrationRunner.php(867): App\Database\Migrations\CreateShiftAndExtendGroupAffecter->up()
+#6 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Database\MigrationRunner.php(183): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\CLI\Commands.php(70): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\CLI\Console.php(48): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Boot.php(351): CodeIgniter\CLI\Console->run()
+#11 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\system\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\Disque D\Mes Projets\Stagiaire\Wandji Shalom\HospitalBack\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2026-07-12 15:47:38 --> TypeError: Unsupported operand types: string - int
+[Method: POST, Route: purchase/createPurchase]
+in APPPATH\Controllers\PurchaseController.php on line 146.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\PurchaseController->createPurchase()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\PurchaseController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 7 SYSTEMPATH\rewrite.php(44): require_once('C:\\Disque D\\Mes Projets\\Stagiaire\\Wandji Shalom\\HospitalBack\\public\\index.php')

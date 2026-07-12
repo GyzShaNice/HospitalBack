@@ -8,6 +8,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\GroupAffecterModel;
 use App\Models\Personnel;
 use App\Models\GroupModel;
+use App\Models\ShiftModel;
 
 class GroupAffecterController extends BaseController
 {
@@ -16,19 +17,24 @@ class GroupAffecterController extends BaseController
     protected $group_M;
     protected $group_model;
     protected $perso_model;
+    protected $shift_model;
 
     function __construct(){
        $this->group_model = new GroupModel();
         $this->perso_model = new Personnel();
         $this->group_M = new GroupAffecterModel();
+        $this->shift_model = new ShiftModel();
     }
     public function indexGroupA()
     {
         $groupsA = $this->group_M
                         ->select('groupaffecter.id_groupAff,groupaffecter.month,groupaffecter.year,
-                                    personel.id_personel,group.id_group')
+                                    groupaffecter.week_number,personel.id_personel,group.id_group,
+                                    group.name_group,group.type_group,
+                                    shift.id_shift,shift.shift_name,shift.start_time,shift.end_time')
                         ->join('personel','groupaffecter.id_personel =  personel.id_personel')
                         ->join('group','groupaffecter.id_group =  group.id_group')
+                        ->join('shift','groupaffecter.id_shift = shift.id_shift','left')
                         ->findAll();
                 
             $response = [
@@ -45,17 +51,20 @@ class GroupAffecterController extends BaseController
 
         $groupA = $this->group_M
                         ->select('groupaffecter.id_groupAff,groupaffecter.month,groupaffecter.year,
-                                    personel.id_personel,group.id_group')
+                                    groupaffecter.week_number,personel.id_personel,group.id_group,
+                                    group.name_group,group.type_group,
+                                    shift.id_shift,shift.shift_name,shift.start_time,shift.end_time')
                         ->join('personel','groupaffecter.id_personel =  personel.id_personel')
                         ->join('group','groupaffecter.id_group =  group.id_group')
-                        ->find();
-                
+                        ->join('shift','groupaffecter.id_shift = shift.id_shift','left')
+                        ->find($idgroupA);
+
             $response = [
-                    "message"=> count($groupA)>0? "groupAffecter found":"groupAffecter not found",
-                    "success"=> count($groupA),
+                    "message"=> $groupA? "groupAffecter found":"groupAffecter not found",
+                    "success"=> (bool) $groupA,
                     "data"=> $groupA
                 ];
-               
+
                 return $this->respond($response);
     }
 
@@ -65,8 +74,10 @@ class GroupAffecterController extends BaseController
         $rules = [
                 'id_group'=>'required|integer',
             'id_personel'=>'required|integer',
-            'month'=>'required|max_length[254]|min_length[9]',
-            'year'=>'required|max_length[254]|min_length[9]',
+            'month'=>'required|max_length[20]|min_length[1]',
+            'year'=>'required|max_length[20]|min_length[1]',
+            'id_shift'=>'permit_empty|integer',
+            'week_number'=>'permit_empty|integer',
 
         ];
 
@@ -75,6 +86,8 @@ class GroupAffecterController extends BaseController
         $idPersonel=$this->request->getVar('id_personel');
         $Month=$this->request->getVar('month');
         $Year=$this->request->getVar('year');
+        $idShift=$this->request->getVar('id_shift');
+        $weekNumber=$this->request->getVar('week_number');
 
         $db = \Config\Database::connect();
         $db->transStart();
@@ -112,10 +125,30 @@ class GroupAffecterController extends BaseController
                 ]);
             }
 
+            if(!empty($idShift)){
+                $shift = $this->shift_model->find($idShift);
+
+                if(!$shift){
+                    return $this->fail([
+                        'message'=>'shift not found',
+                        'success'=>false
+                    ]);
+                }
+
+                if((int) $shift['id_group'] !== (int) $idGroup){
+                    return $this->fail([
+                        'message'=>'this shift does not belong to the selected group',
+                        'success'=>false
+                    ]);
+                }
+            }
+
             // this down creates a medical act
             $groupA = $this->group_M->insert([
                 'id_group'=>$idGroup,
                 'id_personel'=>$idPersonel,
+                'id_shift'=>$idShift ?: null,
+                'week_number'=>$weekNumber ?: null,
                 'year'=>$Year,
                 'month'=>$Month
             ]);
@@ -136,6 +169,8 @@ class GroupAffecterController extends BaseController
                     'id_groupaffecter'=>$groupA,
                     'id_personel'=>$idPersonel,
                     'id_group'=>$idGroup,
+                    'id_shift'=>$idShift ?: null,
+                    'week_number'=>$weekNumber ?: null,
                     'year'=>$Year,
                     'month'=>$Month
                 ]

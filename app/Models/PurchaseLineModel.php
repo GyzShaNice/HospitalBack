@@ -12,7 +12,7 @@ class PurchaseLineModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_product','id_purchase','id_stockMvt'];
+    protected $allowedFields    = ['id_product','id_purchase','id_stockMvt','unit_price'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

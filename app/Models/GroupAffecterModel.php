@@ -12,7 +12,7 @@ class GroupAffecterModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_group','id_personel','month','year'];
+    protected $allowedFields    = ['id_group','id_personel','id_shift','week_number','month','year'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

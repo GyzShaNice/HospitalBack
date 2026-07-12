@@ -20,7 +20,50 @@ class ProductController extends BaseController
 
      public function indexProduct()
     {
-        $product = $this->product_model->findAll();
+        $db = \Config\Database::connect();
+        $today = date('Y-m-d');
+
+        $inStockOnly = filter_var($this->request->getGet('in_stock_only'), FILTER_VALIDATE_BOOLEAN);
+        $expiryBefore = $this->request->getGet('expiry_before');
+
+        // available_quantity = somme des stocks (non supprimes) actuellement lies au produit,
+        // en ne comptant chaque lot de stock qu'une seule fois (un lot peut avoir plusieurs
+        // mouvements: une entree puis des sorties successives lors des ventes).
+        $product = $db->query('
+            SELECT
+                product.*,
+                COALESCE(SUM(stock_totals.quantity_available), 0) AS available_quantity,
+                COALESCE(SUM(CASE
+                    WHEN stock_totals.expiry_date IS NULL OR stock_totals.expiry_date >= ?
+                    THEN stock_totals.quantity_available
+                    ELSE 0
+                END), 0) AS sellable_quantity,
+                MIN(CASE
+                    WHEN stock_totals.quantity_available > 0 THEN stock_totals.expiry_date
+                    ELSE NULL
+                END) AS nearest_expiry_date
+            FROM product
+            LEFT JOIN (
+                SELECT DISTINCT sm.id_product, s.id_stock, s.quantity_available, s.expiry_date
+                FROM stockmovement sm
+                INNER JOIN stock s ON s.id_stock = sm.id_stock AND s.deleted_at IS NULL
+                WHERE sm.deleted_at IS NULL
+            ) AS stock_totals ON stock_totals.id_product = product.id_product
+            WHERE product.deleted_at IS NULL
+            GROUP BY product.id_product
+        ', [$today])->getResultArray();
+
+        if ($inStockOnly) {
+            $product = array_values(array_filter($product, static function ($item) {
+                return (int) ($item['sellable_quantity'] ?? 0) > 0;
+            }));
+        }
+
+        if (!empty($expiryBefore)) {
+            $product = array_values(array_filter($product, static function ($item) use ($expiryBefore) {
+                return !empty($item['nearest_expiry_date']) && $item['nearest_expiry_date'] <= $expiryBefore;
+            }));
+        }
 
             $response = [
                 "message"=>count($product)>0? "product found":"product not found",

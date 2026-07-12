@@ -25,12 +25,45 @@ class StockMovementController extends BaseController
 {
     $db = \Config\Database::connect();
 
-    $movements = $db->table('StockMovement')
-        ->select('StockMovement.id_stockMvt, StockMovement.movement_type, StockMovement.quantity, StockMovement.movement_date, Product.name_product, Stock.name_stock, Stock.expiry_date')
+    $movementType = strtolower((string) $this->request->getGet('movement_type'));
+    $idStock = $this->request->getGet('id_stock');
+    $idProduct = $this->request->getGet('id_product');
+    $expiryBefore = $this->request->getGet('expiry_before');
+
+    if (!empty($movementType) && !in_array($movementType, ['entree', 'sortie'], true)) {
+        return $this->fail([
+            "message" => "movement_type must be entree or sortie",
+            "success" => false
+        ], ResponseInterface::HTTP_BAD_REQUEST);
+    }
+
+    $query = $db->table('StockMovement')
+        ->select('StockMovement.id_stockMvt, StockMovement.id_stock, StockMovement.id_product, StockMovement.movement_type, StockMovement.quantity, StockMovement.movement_date, Product.name_product, Stock.name_stock, Stock.expiry_date, Stock.quantity_available')
         ->join('Product', 'Product.id_product = StockMovement.id_product')
         ->join('Stock', 'Stock.id_stock = StockMovement.id_stock')
         ->where('StockMovement.deleted_at', null)
+        ->where('Stock.deleted_at', null)
+        ->where('Product.deleted_at', null);
+
+    if (!empty($movementType)) {
+        $query->where('LOWER(StockMovement.movement_type)', $movementType);
+    }
+
+    if (!empty($idStock)) {
+        $query->where('StockMovement.id_stock', (int) $idStock);
+    }
+
+    if (!empty($idProduct)) {
+        $query->where('StockMovement.id_product', (int) $idProduct);
+    }
+
+    if (!empty($expiryBefore)) {
+        $query->where('Stock.expiry_date <=', $expiryBefore);
+    }
+
+    $movements = $query
         ->orderBy('StockMovement.movement_date', 'DESC')
+        ->orderBy('StockMovement.id_stockMvt', 'DESC')
         ->get()
         ->getResultArray();
 
@@ -52,7 +85,7 @@ class StockMovementController extends BaseController
             "data"=>$Specmovement
         ];
 
-        return $this->respond($Specmovement);
+        return $this->respond($response);
     }
 
     public function createStockMvt(){

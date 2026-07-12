@@ -24,11 +24,134 @@ class PersonnelController extends BaseController
         $this->funct_model = new FunctionnModel();
     }
 
+    private function getAuthenticatedPersonnelId(): ?int
+    {
+        $header = $this->request->getHeaderLine('Authorization');
+
+        if (empty($header) || !preg_match('/Bearer\s(\S+)/', $header, $matches)) {
+            return null;
+        }
+
+        try {
+            $decoded = JWT::decode($matches[1], new Key(getenv('JWT_SECRET'), 'HS256'));
+            return isset($decoded->data->id_personel) ? (int) $decoded->data->id_personel : null;
+        } catch (\Exception $e) {
+            return null;
+        }
+    }
+
+    public function me()
+    {
+        $idPersonnel = $this->getAuthenticatedPersonnelId();
+
+        if (!$idPersonnel) {
+            return $this->failUnauthorized('Unauthorized');
+        }
+
+        $profile = $this->perso_model
+            ->select('personel.id_personel, personel.staff_code, personel.id_user, users.name_user, users.surname_user, users.email, users.telephone, users.quarter, function.name AS function_name')
+            ->join('users', 'personel.id_user = users.id_user')
+            ->join('function', 'personel.id_function = function.id_function', 'left')
+            ->where('personel.id_personel', $idPersonnel)
+            ->first();
+
+        if (!$profile) {
+            return $this->failNotFound('Personnel not found');
+        }
+
+        return $this->respond([
+            'message' => 'profile found',
+            'success' => true,
+            'data' => $profile,
+        ]);
+    }
+
+    public function updateMe()
+    {
+        $idPersonnel = $this->getAuthenticatedPersonnelId();
+
+        if (!$idPersonnel) {
+            return $this->failUnauthorized('Unauthorized');
+        }
+
+        $currentPersonnel = $this->perso_model->find($idPersonnel);
+
+        if (!$currentPersonnel) {
+            return $this->failNotFound('Personnel not found');
+        }
+
+        $currentUser = $this->user_model->find($currentPersonnel['id_user']);
+
+        if (!$currentUser) {
+            return $this->failNotFound('User not found');
+        }
+
+        $body = $this->request->getJSON(true) ?? [];
+
+        $nameUser = trim((string) ($body['name_user'] ?? $this->request->getVar('name_user') ?? $currentUser['name_user']));
+        $surnameUser = trim((string) ($body['surname_user'] ?? $this->request->getVar('surname_user') ?? $currentUser['surname_user']));
+        $email = trim((string) ($body['email'] ?? $this->request->getVar('email') ?? $currentUser['email']));
+        $telephone = trim((string) ($body['telephone'] ?? $this->request->getVar('telephone') ?? $currentUser['telephone']));
+        $quarter = trim((string) ($body['quarter'] ?? $this->request->getVar('quarter') ?? $currentUser['quarter']));
+        $staffCode = trim((string) ($body['staff_code'] ?? $this->request->getVar('staff_code') ?? $currentPersonnel['staff_code']));
+
+        if ($nameUser === '' || $surnameUser === '' || $email === '' || $telephone === '' || $quarter === '') {
+            return $this->fail([
+                'message' => 'All required profile fields must be filled',
+                'success' => false,
+            ], ResponseInterface::HTTP_BAD_REQUEST);
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->fail([
+                'message' => 'Invalid email format',
+                'success' => false,
+            ], ResponseInterface::HTTP_BAD_REQUEST);
+        }
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        $this->user_model->update($currentPersonnel['id_user'], [
+            'name_user' => $nameUser,
+            'surname_user' => $surnameUser,
+            'email' => $email,
+            'telephone' => $telephone,
+            'quarter' => $quarter,
+        ]);
+
+        $this->perso_model->update($idPersonnel, [
+            'staff_code' => $staffCode,
+        ]);
+
+        $db->transComplete();
+
+        if ($db->transStatus() === false) {
+            return $this->fail([
+                'message' => 'Update failed',
+                'success' => false,
+            ]);
+        }
+
+        $updatedProfile = $this->perso_model
+            ->select('personel.id_personel, personel.staff_code, personel.id_user, users.name_user, users.surname_user, users.email, users.telephone, users.quarter, function.name AS function_name')
+            ->join('users', 'personel.id_user = users.id_user')
+            ->join('function', 'personel.id_function = function.id_function', 'left')
+            ->where('personel.id_personel', $idPersonnel)
+            ->first();
+
+        return $this->respond([
+            'message' => 'Profile updated',
+            'success' => true,
+            'data' => $updatedProfile,
+        ]);
+    }
+
     public function indexPerso()
     {
         $persos = $this->perso_model
                       ->select('personel.id_personel,personel.staff_code,users.id_user,users.name_user,
-                                users.surname_user,users.quarter,users.password,users.telephone,users.email,function.name')
+                                users.surname_user,users.quarter,users.telephone,users.email,function.name')
                        ->join('users','personel.id_user = users.id_user')
                        ->join('function','personel.id_function = function.id_function')  
                        ->findAll();
@@ -78,8 +201,16 @@ class PersonnelController extends BaseController
 
         
 
-        $staff = $this->request->getVar('staff_code');
+        $staff = trim((string) $this->request->getVar('staff_code'));
         $password = $this->request->getVar('password');
+
+        if ($staff === '') {
+            return $this->fail([
+                'error'   => 'staff_code is required',
+                'message' => 'invalid',
+                'success' => false
+            ], ResponseInterface::HTTP_BAD_REQUEST);
+        }
 
         // find personel by staff code
     // dd($this->request->getVar('staff_code'));

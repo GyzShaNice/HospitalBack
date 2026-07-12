@@ -74,6 +74,8 @@ $routes->get('/', 'Home::index');
         $routes->get('(:num)','PersonnelController::showPerso');
         $routes->post('connect','PersonnelController::connexionPerso');
         $routes->post('create','PersonnelController::createPerso');
+        $routes->get('me','PersonnelController::me',['filter'=>'auth']);
+        $routes->put('me','PersonnelController::updateMe',['filter'=>'auth']);
         $routes->put('updatePerso/(:num)','PersonnelController::updatePerso/$1');
         $routes->delete('deletePerso/(:num)','PersonnelController::deletePerso/$1');
     });
@@ -126,24 +128,31 @@ $routes->get('/', 'Home::index');
     });
 
     $routes->group('presc',function($routes){
-        $routes->get('','PrescribController :: indexPresc');
-        $routes->get('showPresc/(:num)','PrescribController :: showPresc/$1');
+        $routes->get('','PrescribController::indexPresc');
+        $routes->get('showPresc/(:num)','PrescribController::showPres/$1');
         $routes->post('createPresc','PrescribController::createPresc');
-        $routes->put('updatePresc/(:num)','PrescribController :: updatePresc/$1');
-        $routes->delete('deletePresc/(:num)','PrescribController :: deletePresc/$1');
+        $routes->put('updatePresc/(:num)','PrescribController::updatePresc/$1');
+        $routes->delete('deletePresc/(:num)','PrescribController::deletePresc/$1');
+    });
+
+    $routes->group('productPresc',function($routes){
+        $routes->get('','ProductPrescriptionController::indexProductPresc');
+        $routes->get('presc/(:num)','ProductPrescriptionController::showByPresc/$1');
+        $routes->post('create','ProductPrescriptionController::createProductPresc');
+        $routes->delete('delete/(:num)','ProductPrescriptionController::deleteProductPresc/$1');
     });
 
     $routes->group('group',function($routes){
-        $routes->get('','GroupController :: indexGroup');
-        $routes->get('showGroup/(:num)','GroupController :: showGroup/$1');
+        $routes->get('','GroupController::indexGroup');
+        $routes->get('showGroup/(:num)','GroupController::showGroup/$1');
         $routes->post('createGroup','GroupController::createGroup');
-        $routes->put('updateGroup/(:num)','GroupController :: updateGroup/$1');
-        $routes->delete('deleteGroup/(:num)','GroupController :: deleteGroup/$1');
+        $routes->put('updateGroup/(:num)','GroupController::updateGroup/$1');
+        $routes->delete('deleteGroup/(:num)','GroupController::deleteGroup/$1');
     });
 
      $routes->group('groupA',function($routes){
-        $routes->get('','GroupAffecterController :: indexGroupA');
-        $routes->get('showGroupAff/(:num)','GroupAffecterController :: showGroupA/$1');
+        $routes->get('','GroupAffecterController::indexGroupA');
+        $routes->get('showGroupAff/(:num)','GroupAffecterController::showGroupA/$1');
         $routes->post('createGroupAff','GroupAffecterController::createGroupA');
         $routes->put('updateGroupAff/(:num)','GroupAffecterController::updateGroupA/$1');
         $routes->delete('deleteGroupAff/(:num)','GroupAffecterController::deleteGroupA/$1');
@@ -191,6 +200,16 @@ $routes->get('/', 'Home::index');
 
      $routes->group('purchase',function($routes){
         $routes->get('','PurchaseController::indexPurchase');
-        $routes->post('createPurchase','PurchaseController::createPurchase');
-       
+        $routes->get('showPurchase/(:num)','PurchaseController::showPurchase/$1');
+        $routes->get('receipt/(:num)','PurchaseController::showReceipt/$1');
+        $routes->post('createPurchase','PurchaseController::createPurchase',['filter'=>'auth']);
+        $routes->delete('deletePurchase/(:num)','PurchaseController::deletePurchase/$1');
+    });
+
+    $routes->group('shift',function($routes){
+        $routes->get('','ShiftController::indexShift');
+        $routes->get('group/(:num)','ShiftController::showShiftsByGroup/$1');
+        $routes->post('createShift','ShiftController::createShift');
+        $routes->put('updateShift/(:num)','ShiftController::updateShift/$1');
+        $routes->delete('deleteShift/(:num)','ShiftController::deleteShift/$1');
     });
