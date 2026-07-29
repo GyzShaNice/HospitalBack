@@ -1,8 +1,10 @@
 # HospitalBack - Hospital management system logic
 
-![Php]
-![Codeigniter]
-![MySQL]
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?logo=php&logoColor=white)
+![CodeIgniter](https://img.shields.io/badge/CodeIgniter-4-DD4814?logo=codeigniter&logoColor=white)
+![Composer](https://img.shields.io/badge/Composer-Dependency%20Manager-885630?logo=composer&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?logo=mysql&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-000000?logo=jsonwebtokens&logoColor=white)
 
 ## 📋 Overview
 
@@ -153,9 +155,9 @@ http://localhost:8080
 
 **WANDJI Berenice**
 
-Github: [@kenmoe](https://github.com/GyzShaNice)
+Github: [@Wandji](https://github.com/GyzShaNice)
 
-Email: [kenmarcbertrand@gmail.com](berenicewandji02@gmail.com)
+Email: [berenicewandji02@gmail.com](berenicewandji02@gmail.com)
 
 ## 🙏 Acknowledgements
 
