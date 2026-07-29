@@ -17,7 +17,7 @@ class CorsFilter implements FilterInterface
         header('Access-Control-Allow-Headers: Content-Type, Authorization');
         // header('Access-Control-Allow-Credentials: true');
 
-        // ⚠️ IMPORTANT : répondre aux OPTIONS
+       
         if ($request->getMethod() === 'options') {
 
             header('HTTP/1.1 200 OK');

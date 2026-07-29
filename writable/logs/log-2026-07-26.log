@@ -1,0 +1,55 @@
+CRITICAL - 2026-07-26 14:15:52 --> ErrorException: Undefined property: CodeIgniter\HTTP\IncomingRequest::$id_personnel
+[Method: POST, Route: notif/envoieNotif]
+in APPPATH\Controllers\NotificationController.php on line 37.
+ 1 APPPATH\Controllers\NotificationController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\HTTP\\IncomingRequest::$id_personnel', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\NotificationController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->send()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-07-26 14:18:08 --> ErrorException: Undefined property: CodeIgniter\HTTP\IncomingRequest::$id_personnel
+[Method: POST, Route: notif/envoieNotif]
+in APPPATH\Controllers\NotificationController.php on line 37.
+ 1 APPPATH\Controllers\NotificationController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\HTTP\\IncomingRequest::$id_personnel', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\NotificationController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->send()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-07-26 14:18:36 --> ErrorException: Undefined property: CodeIgniter\HTTP\IncomingRequest::$id_personel
+[Method: POST, Route: notif/envoieNotif]
+in APPPATH\Controllers\NotificationController.php on line 37.
+ 1 APPPATH\Controllers\NotificationController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\HTTP\\IncomingRequest::$id_personel', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\NotificationController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->send()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-07-26 14:21:11 --> ErrorException: Undefined property: CodeIgniter\HTTP\IncomingRequest::$data
+[Method: POST, Route: notif/envoieNotif]
+in APPPATH\Controllers\NotificationController.php on line 37.
+ 1 APPPATH\Controllers\NotificationController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\HTTP\\IncomingRequest::$data', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\NotificationController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->send()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')
+CRITICAL - 2026-07-26 14:22:09 --> ErrorException: Undefined property: CodeIgniter\HTTP\IncomingRequest::$id_personel
+[Method: POST, Route: notif/envoieNotif]
+in APPPATH\Controllers\NotificationController.php on line 37.
+ 1 APPPATH\Controllers\NotificationController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\HTTP\\IncomingRequest::$id_personel', 'C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\app\\Controllers\\NotificationController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\NotificationController->send()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NotificationController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 8 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\FBI DENIS STORE\\Desktop\\TestBachelor\\HospitalBack\\public\\index.php')

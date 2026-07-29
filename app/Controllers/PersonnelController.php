@@ -301,7 +301,7 @@ class PersonnelController extends BaseController
         $rules = [
             'name_user' => 'required|max_length[100]|min_length[5]',
             'staff_code' => 'required|max_length[100]|min_length[5]',
-            'surname_user'=> 'required|max_length[10]|is_unique[users.surname_user]',
+            'surname_user'=> 'required|max_length[10]|min_length[3]',
             'password'=> 'required|max_length[254]|min_length[7]',
             'email' => 'required|max_length[254]|valid_email|is_unique[users.email]',
             'quarter' => 'required|max_length[15]|min_length[2]',

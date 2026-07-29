@@ -213,3 +213,8 @@ $routes->get('/', 'Home::index');
         $routes->put('updateShift/(:num)','ShiftController::updateShift/$1');
         $routes->delete('deleteShift/(:num)','ShiftController::deleteShift/$1');
     });
+
+    $routes->group('notif',function($routes){
+        $routes->post('envoieNotif','NotificationController::send',['filter'=>'auth']);
+        $routes->get('recoieNotif','NotificationController::notifRecu');
+    });
